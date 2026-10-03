@@ -1,3 +1,0 @@
-# git
-
-A personal repository.
