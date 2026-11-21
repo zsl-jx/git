@@ -1,0 +1,84 @@
+[System]
+Name='avoidance_v2'
+Type='mamdani'
+Version=2.0
+NumInputs=3
+NumOutputs=2
+NumRules=27
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Dfront'
+Range=[0 1]
+NumMFs=3
+MF1='N':'trimf',[0 0 0.42]
+MF2='M':'trimf',[0.28 0.55 0.82]
+MF3='F':'trimf',[0.68 1 1]
+
+[Input2]
+Name='Dleft'
+Range=[0 1]
+NumMFs=3
+MF1='N':'trimf',[0 0 0.42]
+MF2='M':'trimf',[0.28 0.55 0.82]
+MF3='F':'trimf',[0.68 1 1]
+
+[Input3]
+Name='Dright'
+Range=[0 1]
+NumMFs=3
+MF1='N':'trimf',[0 0 0.42]
+MF2='M':'trimf',[0.28 0.55 0.82]
+MF3='F':'trimf',[0.68 1 1]
+
+[Output1]
+Name='Steering'
+Range=[-1 1]
+NumMFs=5
+MF1='TL':'trimf',[-1 -1 -0.5]
+MF2='SL':'trimf',[-1 -0.5 0]
+MF3='Z':'trimf',[-0.5 0 0.5]
+MF4='SR':'trimf',[0 0.5 1]
+MF5='TR':'trimf',[0.5 1 1]
+
+[Output2]
+Name='Speeding'
+Range=[0 1]
+NumMFs=4
+MF1='Stop':'trimf',[0 0 0.2]
+MF2='Slow':'trimf',[0.1 0.3 0.5]
+MF3='Med':'trimf',[0.33 0.5 0.66]
+MF4='Fast':'trimf',[0.5 1 1]
+
+[Rules]
+3 3 3, 3 4 (1) : 1
+3 3 2, 3 4 (1) : 1
+3 3 1, 2 3 (1) : 1
+3 2 3, 3 4 (1) : 1
+3 2 2, 3 4 (1) : 1
+3 2 1, 3 3 (1) : 1
+3 1 3, 4 3 (1) : 1
+3 1 2, 4 3 (1) : 1
+3 1 1, 3 1 (1) : 1
+2 3 3, 4 3 (1) : 1
+2 3 2, 2 3 (1) : 1
+2 3 1, 2 3 (1) : 1
+2 2 3, 4 3 (1) : 1
+2 2 2, 4 2 (1) : 1
+2 2 1, 2 2 (1) : 1
+2 1 3, 4 3 (1) : 1
+2 1 2, 4 2 (1) : 1
+2 1 1, 4 2 (1) : 1
+1 3 3, 5 2 (1) : 1
+1 3 2, 1 2 (1) : 1
+1 3 1, 1 2 (1) : 1
+1 2 3, 5 2 (1) : 1
+1 2 2, 5 2 (1) : 1
+1 2 1, 1 2 (1) : 1
+1 1 3, 5 2 (1) : 1
+1 1 2, 5 2 (1) : 1
+1 1 1, 5 1 (1) : 1
